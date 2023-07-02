@@ -5,10 +5,11 @@
 
 using namespace std;
 
-
+// =============================== ** Unordered Map Class ** =======================================
 template<class A,class B> 
 class Unordered_Map{
 
+    // Node class for LinkedList
     public:
     class Node{
         public:
@@ -34,21 +35,30 @@ class Unordered_Map{
         arr = new Node*[bucket_size];
     }
 
+    // hash function for integer
     int hashF(int key){
         return key%bucket_size;
     }
+
+    // hash function for float
     int hashF(float key){
         int temp = (int) key;
         return temp%bucket_size;
     }
+
+    // hash function for double
     int hashF(double key){
         int temp = (int) key;
         return temp%bucket_size;
     }
+
+    // hash function for char
     int hashF(char key){
         int temp = (int) key;
         return temp%bucket_size;
     }
+
+    // hash function for string
     int hashF(string key){
 
         string input = key;
@@ -62,7 +72,7 @@ class Unordered_Map{
         return hashVal%bucket_size;
     }
 
-
+    // Inserting 'v' in key 'k' in unordered_map
     void insert(A k,B v){
         int hashVal = this->hashF(k);
         if(arr[hashVal]==NULL){
@@ -86,6 +96,7 @@ class Unordered_Map{
         }
     }
 
+    // Remove key from unordered_map
     void erase(A k){
         int hashVal = this->hashF(k);
         if(arr[hashVal]==NULL){
@@ -108,6 +119,7 @@ class Unordered_Map{
         free(n);
     }
 
+    // check if key exists or not
     bool find(A k){
         int hashVal = this->hashF(k);
         if(arr[hashVal]==NULL){
@@ -124,6 +136,7 @@ class Unordered_Map{
         
     }
 
+    // Get the value corresponding to a particular key.
     B operator[](A k){
         int hashVal=this->hashF(k);
         Node* p = arr[hashVal];
@@ -140,6 +153,7 @@ class Unordered_Map{
 
 
 
+// =============================== ** Driver Code implements Question ** =======================================
 
 int main(){
     
